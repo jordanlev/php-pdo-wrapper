@@ -31,7 +31,7 @@ class DB {
 			$stmt = $this->db->prepare($sql);
 			$stmt->execute($params);
 		}
-		return $stmt->fetchAll(); //returns results as specified by PDO::ATTR_DEFAULT_FETCH_MODE up above, or could be overridden on a per-call basis by passing in one of the fetch_style constants (PDO::FETCH_OBJ, PDO::FETCH_ASSOC, or PDO::FETCH_NUM) to the function
+		return $stmt->fetchAll(); //returns results as specified by PDO::ATTR_DEFAULT_FETCH_MODE up above, or could be overridden on a per-call basis by providing one of the fetch_style constants (PDO::FETCH_OBJ, PDO::FETCH_ASSOC, or PDO::FETCH_NUM) to `$stmt->fetchAll()`
 	}
 	
 	public function col($sql, array $params = array()) {
@@ -43,7 +43,7 @@ class DB {
 	public function row($sql, array $params = array()) {
 		$stmt = $this->db->prepare($sql);
 		$stmt->execute($params);
-		return $stmt->fetch(); //result format as specified  by PDO::ATTR_DEFAULT_FETCH_MODE up above, or could be overridden on a per-call basis by passing in one of the fetch_style constants (PDO::FETCH_OBJ, PDO::FETCH_ASSOC, or PDO::FETCH_NUM) to the function
+		return $stmt->fetch(); //returns results as specified by PDO::ATTR_DEFAULT_FETCH_MODE up above, or could be overridden on a per-call basis by providing one of the fetch_style constants (PDO::FETCH_OBJ, PDO::FETCH_ASSOC, or PDO::FETCH_NUM) to `$stmt->fetch()`
 	}
 	
 	public function one($sql, array $params = array()) {
